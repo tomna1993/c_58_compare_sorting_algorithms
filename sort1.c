@@ -19,7 +19,11 @@ int main(int argc, string argv[])
         printf ("Example: time ./sort1 reversed10000.txt\n");
         return 1;
     }
-    
+
+    string text_file = argv[1];
+
+    const int list_length = find_number(text_file);
+
     int unsorted_numbers[ARRAY_LENGTH] = {5, 7, 6, 3, 1, 9, 0, 2, 10, 4, 8}; 
 
     print_array(unsorted_numbers, ARRAY_LENGTH);
