@@ -24,14 +24,14 @@ int main(int argc, string argv[])
 
     const int list_length = find_number(text_file);
 
-    int unsorted_numbers[ARRAY_LENGTH] = {5, 7, 6, 3, 1, 9, 0, 2, 10, 4, 8}; 
+    int unsorted_numbers[list_length]; 
 
-    print_array(unsorted_numbers, ARRAY_LENGTH);
+    print_array(unsorted_numbers, list_length);
 
     // The sorted array will be placed back into unsorted array
-    merge_sort(unsorted_numbers, ARRAY_LENGTH);
+    merge_sort(unsorted_numbers, list_length);
 
-    print_array(unsorted_numbers, ARRAY_LENGTH);
+    print_array(unsorted_numbers, list_length);
 
     return 0;
 }
