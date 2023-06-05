@@ -11,6 +11,15 @@ void copy_array(int from[], int to[], int array_length);
 
 int main(int argc, string argv[])
 {
+    // Show user how to start the program if it was started incorrectly
+    if (argc != 2)
+    {
+        printf ("Usage: ./[program_name] [text_file.txt]\n");
+        printf ("or: time ./[program_name] [text_file.txt]\n");
+        printf ("Example: time ./sort1 reversed10000.txt\n");
+        return 1;
+    }
+    
     int unsorted_numbers[ARRAY_LENGTH] = {5, 7, 6, 3, 1, 9, 0, 2, 10, 4, 8}; 
 
     print_array(unsorted_numbers, ARRAY_LENGTH);
