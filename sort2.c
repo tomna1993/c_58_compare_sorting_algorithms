@@ -1,6 +1,8 @@
 #include <cs50.h>
 #include <ctype.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 int find_number(string text);
 void print_array(int array[], int length);
@@ -23,15 +25,24 @@ int main(int argc, string argv[])
 
     int unsorted_array[list_length];
 
+    // Read file into array
 
+    FILE *file_handle = fopen (text_file, "r");
 
-    printf ("Unsorted: ");
-    print_array(unsorted_array, list_length);
+    if (file_handle == NULL)
+    {
+        printf ("Cannot open file!\n");
+        return 1;
+    }
+
+    for (int i = 0; i < list_length; i++)
+    {
+        fscanf(file_handle, "%i", &unsorted_array[i]);
+    }
 
     bubble_sort(unsorted_array, list_length);
 
-    printf ("Sorted: ");
-    print_array(unsorted_array, list_length);
+    return 0;
 }
 
 int find_number(string text)
@@ -54,12 +65,14 @@ int find_number(string text)
 
     return atoi(number);
 }
-
-// Print array
-void print_array(int array[], int length)
 {
     for (int i = 0; i < length; i++)
     {
+        if (i % 20 == 0)
+        {
+            printf ("\n");
+        }
+
         printf ("%i ", array[i]);
     }
     printf ("\n");
