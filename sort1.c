@@ -1,3 +1,4 @@
+#include <cs50.h>
 #include <stdio.h>
 
 #define ARRAY_LENGTH 11
@@ -8,7 +9,7 @@ void sort_halves(int unsorted[], int sorted[], int start_index, int end_index);
 void merge_halves(int unsorted[], int sorted[], int start_index, int mid_index, int end_index);
 void copy_array(int from[], int to[], int array_length);
 
-int main(void)
+int main(int argc, string argv[])
 {
     int unsorted_numbers[ARRAY_LENGTH] = {5, 7, 6, 3, 1, 9, 0, 2, 10, 4, 8}; 
 
