@@ -1,8 +1,10 @@
 #include <cs50.h>
+#include <ctype.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-#define ARRAY_LENGTH 11
-
+int find_number(string text);
 void print_array(int array[], int array_length);
 void merge_sort(int array[], int array_length);
 void sort_halves(int unsorted[], int sorted[], int start_index, int end_index);
@@ -22,18 +24,49 @@ int main(int argc, string argv[])
 
     string text_file = argv[1];
 
-    const int list_length = find_number(text_file);
+    int list_length = find_number(text_file);
 
-    int unsorted_numbers[list_length]; 
+    int unsorted_numbers[list_length];
 
-    print_array(unsorted_numbers, list_length);
+    // Read file into array
+    FILE *file_handle = fopen (text_file, "r");
+
+    if (file_handle == NULL)
+    {
+        printf ("Cannot open file!\n");
+        return 1;
+    }
+
+    for (int i = 0; i < list_length; i++)
+    {
+        fscanf(file_handle, "%i", &unsorted_numbers[i]);
+    }
 
     // The sorted array will be placed back into unsorted array
     merge_sort(unsorted_numbers, list_length);
 
-    print_array(unsorted_numbers, list_length);
-
     return 0;
+}
+
+int find_number(string text)
+{
+    char number[10];
+    int j = 0;
+
+    for (int i = 0, length = strlen(text); i < length; i++)
+    {
+        if (isalpha(text[i]))
+        {
+            continue;
+        }
+
+        if (isdigit(text[i]))
+        {
+            number[j++] = text[i];   
+        }
+    }
+
+    return atoi(number);
 }
 
 void merge_sort(int array[], int array_length)
@@ -48,7 +81,6 @@ void merge_sort(int array[], int array_length)
 
     return;
 }
-
 
 void sort_halves(int unsorted[], int sorted[], int start_index, int end_index)
 {
@@ -75,39 +107,44 @@ void sort_halves(int unsorted[], int sorted[], int start_index, int end_index)
 
 void merge_halves(int unsorted[], int sorted[], int start_index, int mid_index, int end_index)
 {
-    int mid = mid_index;
+    int count = start_index;
     int start = start_index;
 
-    for (int i = start_index; i <= end_index; i++)
+    int mid = mid_index;
+
+    while (start < mid_index && mid <= end_index)
     {
-        // Left source is already sorted, copy the right source 
-        if (mid > end_index)
-        {
-            mid = start;
-        }
-
-        // Right source is already sorted, copy the left source
-        if (start >= mid_index)
-        {
-            start = mid; 
-        }
-
         // Always check unsorted list, later we must copy the sorted array
         // back into the unsorted
-        if (unsorted[start] < unsorted[mid])
+        if (unsorted[start] <= unsorted[mid])
         {
-            sorted[i] = unsorted[start];
+            sorted[count] = unsorted[start];
             start++;
         }
         else
         {
-            sorted[i] = unsorted[mid];
+            sorted[count] = unsorted[mid];
             mid++;
         }
+
+        count++;
+    }
+
+    //
+    while (start < mid_index) 
+    {
+        sorted[count++] = unsorted[start++];  
+    }
+
+    while (mid <= end_index)
+    {
+        sorted[count++] = unsorted[mid++];
     }
 
     // Copy the sorted part of the list back to unsorted
     copy_array(sorted, unsorted, end_index + 1);
+
+    // print_array(unsorted, end_index + 1);
 
     return;
 }
@@ -126,6 +163,10 @@ void print_array(int array[], int array_length)
 {
     for (int i = 0; i < array_length; i++)
     {
+        if (i % 20 == 0)
+        {
+            printf ("\n");
+        }
         printf ("%i ", array[i]);
     }
     printf ("\n");
