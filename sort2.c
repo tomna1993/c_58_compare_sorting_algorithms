@@ -1,3 +1,4 @@
+#include <cs50.h>
 #include <stdio.h>
 
 #define ARRAY_LENGTH 11
@@ -5,7 +6,7 @@
 void print_array(int array[], int length);
 void bubble_sort(int unsorted_array[], int array_length);
 
-int main(void)
+int main(int argc, string argv[])
 {
     int unsorted_array[ARRAY_LENGTH] = {0, 4, 3, 10, 6, 2, 8, 7, 5, 9, 1};
 
