@@ -65,18 +65,6 @@ int find_number(string text)
 
     return atoi(number);
 }
-{
-    for (int i = 0; i < length; i++)
-    {
-        if (i % 20 == 0)
-        {
-            printf ("\n");
-        }
-
-        printf ("%i ", array[i]);
-    }
-    printf ("\n");
-}
 
 // Bubble sort algorithm
 void bubble_sort(int unsorted_array[], int array_length)
