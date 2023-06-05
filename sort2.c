@@ -42,6 +42,8 @@ int main(int argc, string argv[])
 
     bubble_sort(unsorted_array, list_length);
 
+    // print_array(unsorted_array, list_length);
+
     return 0;
 }
 
@@ -81,4 +83,19 @@ void bubble_sort(int unsorted_array[], int array_length)
             }
         }
     }
+}
+
+void print_array(int array[], int array_length)
+{
+    for (int i = 0; i < array_length; i++)
+    {
+        if (i % 20 == 0)
+        {
+            printf ("\n");
+        }
+        printf ("%i ", array[i]);
+    }
+    printf ("\n");
+
+    return;
 }
