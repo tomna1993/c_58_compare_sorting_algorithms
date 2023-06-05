@@ -2,8 +2,6 @@
 #include <ctype.h>
 #include <stdio.h>
 
-#define ARRAY_LENGTH 11
-
 int find_number(string text);
 void print_array(int array[], int length);
 void bubble_sort(int unsorted_array[], int array_length);
@@ -25,13 +23,15 @@ int main(int argc, string argv[])
 
     int unsorted_array[list_length];
 
-    printf ("Unsorted: ");
-    print_array(unsorted_array, ARRAY_LENGTH);
 
-    bubble_sort(unsorted_array, ARRAY_LENGTH);
+
+    printf ("Unsorted: ");
+    print_array(unsorted_array, list_length);
+
+    bubble_sort(unsorted_array, list_length);
 
     printf ("Sorted: ");
-    print_array(unsorted_array, ARRAY_LENGTH);
+    print_array(unsorted_array, list_length);
 }
 
 int find_number(string text)
