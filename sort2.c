@@ -1,8 +1,10 @@
 #include <cs50.h>
+#include <ctype.h>
 #include <stdio.h>
 
 #define ARRAY_LENGTH 11
 
+int find_number(string text);
 void print_array(int array[], int length);
 void bubble_sort(int unsorted_array[], int array_length);
 
@@ -17,8 +19,11 @@ int main(int argc, string argv[])
         return 1;
     }
 
+    string text_file = argv[1];
 
-    int unsorted_array[ARRAY_LENGTH] = {0, 4, 3, 10, 6, 2, 8, 7, 5, 9, 1};
+    const int list_length = find_number(text_file);
+
+    int unsorted_array[list_length];
 
     printf ("Unsorted: ");
     print_array(unsorted_array, ARRAY_LENGTH);
@@ -27,6 +32,27 @@ int main(int argc, string argv[])
 
     printf ("Sorted: ");
     print_array(unsorted_array, ARRAY_LENGTH);
+}
+
+int find_number(string text)
+{
+    char number[10];
+    int j = 0;
+
+    for (int i = 0, length = strlen(text); i < length; i++)
+    {
+        if (isalpha(text[i]))
+        {
+            continue;
+        }
+
+        if (isdigit(text[i]))
+        {
+            number[j++] = text[i];   
+        }
+    }
+
+    return atoi(number);
 }
 
 // Print array
