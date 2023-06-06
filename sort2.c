@@ -71,8 +71,13 @@ int find_number(string text)
 // Bubble sort algorithm
 void bubble_sort(int unsorted_array[], int array_length)
 {
+    bool sorted;
+
     for (int i = 0; i < array_length; i++)
     {
+        // sorted remains true if the list is already sorted
+        sorted = true;
+
         for (int j = 0; j < array_length-1; j++)
         {
             if (unsorted_array[j] > unsorted_array[j + 1])
@@ -80,9 +85,20 @@ void bubble_sort(int unsorted_array[], int array_length)
                 int temp = unsorted_array[j];
                 unsorted_array[j] = unsorted_array[j + 1];
                 unsorted_array[j + 1] = temp;
+
+                // The list is not sorted yet, values in the array was replaced
+                sorted = false;
             }
         }
+
+        // List sorted
+        if (sorted)
+        {
+            return;
+        }
     }
+
+    return;
 }
 
 void print_array(int array[], int array_length)
