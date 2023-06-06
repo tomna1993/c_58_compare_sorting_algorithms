@@ -83,6 +83,8 @@ void insertion_sort(int unsorted_list_array[], int array_length)
             j--;
         }
     }
+
+    return;
 }
 
 void print_array(int array[], int array_length)
