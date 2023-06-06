@@ -81,10 +81,13 @@ void selection_sort(int array[], int array_length)
             }
         }
 
-        // Swap the lowest value with the i-th place
-        int temp = array[i];
-        array[i] = array[smallest_index];
-        array[smallest_index] = temp; 
+        if (smallest_index != i)
+        {
+            // Swap the lowest value with the i-th place
+            int temp = array[i];
+            array[i] = array[smallest_index];
+            array[smallest_index] = temp; 
+        }
     }
 
     return;
