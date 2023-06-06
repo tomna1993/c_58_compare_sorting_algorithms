@@ -78,7 +78,7 @@ void bubble_sort(int unsorted_array[], int array_length)
         // sorted remains true if the list is already sorted
         sorted = true;
 
-        for (int j = 0; j < array_length-1; j++)
+        for (int j = 0; j < array_length - 1 - i; j++)
         {
             if (unsorted_array[j] > unsorted_array[j + 1])
             {
